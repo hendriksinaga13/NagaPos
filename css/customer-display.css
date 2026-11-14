@@ -1,0 +1,141 @@
+/**
+ * css/customer-display.css
+ * Layar pelanggan — full screen, teks besar, kontras tinggi.
+ */
+
+.customer-display-mode {
+  overflow: hidden;
+  background: #0f172a;
+  color: #fff;
+}
+
+.customer-display-mode #app { min-height: 100dvh; padding: 0; }
+.customer-display-mode .navbar,
+.customer-display-mode .bottom-nav { display: none !important; }
+
+.cd-page {
+  min-height: 100dvh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: #f1f5f9;
+  font-family: var(--font-sans);
+  overflow: hidden;
+}
+
+/* Idle */
+.cd-idle {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 6vh 4vw;
+  text-align: center;
+  gap: 1rem;
+}
+.cd-logo { width: 140px; height: 140px; filter: drop-shadow(0 4px 24px rgba(37,99,235,0.4)); }
+.cd-store { font-size: clamp(32px, 6vw, 64px); font-weight: 800; letter-spacing: -0.02em; }
+.cd-store-meta { font-size: clamp(14px, 1.6vw, 20px); color: #94a3b8; }
+.cd-welcome { margin-top: 3vh; font-size: clamp(24px, 4vw, 40px); font-weight: 700; color: #60a5fa; }
+.cd-hint { font-size: clamp(14px, 1.4vw, 18px); color: #94a3b8; }
+
+/* Cart */
+.cd-cart {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 3vh 4vw;
+  overflow: hidden;
+}
+.cd-cart__header {
+  font-size: clamp(20px, 2.2vw, 28px);
+  font-weight: 700;
+  padding-bottom: 1vh;
+  border-bottom: 2px solid #334155;
+  margin-bottom: 1.5vh;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.cd-items { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+.cd-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  padding: 1.2vh 0;
+  border-bottom: 1px solid #1e293b;
+  align-items: center;
+}
+.cd-item__name { font-size: clamp(18px, 1.8vw, 26px); font-weight: 600; }
+.cd-item__meta { font-size: clamp(13px, 1.2vw, 16px); color: #94a3b8; margin-top: 2px; }
+.cd-item__total {
+  font-size: clamp(18px, 1.8vw, 26px);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.cd-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 2vh 0 1vh;
+  border-top: 3px solid #2563eb;
+  margin-top: 1vh;
+}
+.cd-total__label {
+  font-size: clamp(18px, 1.8vw, 24px);
+  font-weight: 700; color: #94a3b8; letter-spacing: 0.1em;
+}
+.cd-total__value {
+  font-size: clamp(40px, 6vw, 88px);
+  font-weight: 800; color: #60a5fa;
+  font-variant-numeric: tabular-nums; line-height: 1;
+}
+.cd-discount {
+  text-align: right; color: #fbbf24;
+  font-size: clamp(16px, 1.6vw, 22px); font-weight: 600; padding-top: 0.5vh;
+}
+
+/* Thank You */
+.cd-thank {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 6vh 4vw;
+  text-align: center;
+  gap: 1.5vh;
+  background: linear-gradient(135deg, #052e16 0%, #0f172a 100%);
+  animation: cd-fade-in 0.4s ease;
+}
+@keyframes cd-fade-in {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+.cd-thank__icon { color: #22c55e; margin-bottom: 1vh; }
+.cd-thank__icon .icon { width: clamp(80px, 12vw, 140px); height: clamp(80px, 12vw, 140px); stroke-width: 2.5; }
+.cd-thank__title { font-size: clamp(40px, 7vw, 80px); font-weight: 800; color: #fff; }
+.cd-thank__msg { font-size: clamp(18px, 2vw, 26px); color: #94a3b8; }
+.cd-thank__change {
+  margin-top: 2vh;
+  padding: 2vh 4vw;
+  background: rgba(34, 197, 94, 0.15);
+  border: 2px solid #22c55e;
+  border-radius: var(--radius-lg);
+  min-width: 40vw;
+}
+.cd-thank__change-label {
+  font-size: clamp(14px, 1.4vw, 18px);
+  color: #86efac; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.1em;
+}
+.cd-thank__change-value {
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 800; color: #22c55e;
+  font-variant-numeric: tabular-nums; margin-top: 0.5vh;
+}
+.cd-thank__debt { margin-top: 1vh; color: #fbbf24; font-size: clamp(16px, 1.6vw, 22px); font-weight: 600; }
+.cd-thank__footer { margin-top: 3vh; font-size: clamp(14px, 1.4vw, 18px); color: #64748b; font-style: italic; }

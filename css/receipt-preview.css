@@ -1,0 +1,73 @@
+/**
+ * css/receipt-preview.css — Preview struk monospace di layar (bukan print).
+ */
+
+.receipt-preview {
+  font-family: ui-monospace, "SF Mono", "Cascadia Mono", Consolas, monospace;
+  font-size: 12px;
+  line-height: 1.35;
+  color: #111;
+  background: #fff;
+  padding: 12px;
+  border-radius: var(--radius-md);
+  max-width: calc(var(--rs-width, 32) * 8px);
+  margin: 0 auto;
+  border: 1px solid var(--color-border);
+  overflow-x: hidden;
+  word-break: break-word;
+}
+
+html.theme-dark .receipt-preview,
+@media (prefers-color-scheme: dark) {
+  .receipt-preview { color: #111; } /* struk selalu hitam-putih */
+}
+
+.receipt-preview .rs-center { text-align: center; }
+.receipt-preview .rs-small { font-size: 11px; color: #444; }
+
+.receipt-preview .rs-store {
+  font-weight: 700;
+  font-size: 14px;
+  margin: 4px 0 2px;
+}
+
+.receipt-preview .rs-logo__img {
+  max-height: 64px;
+  margin: 0 auto 6px;
+  display: block;
+}
+
+.receipt-preview .rs-hr {
+  border-top: 1px dashed #999;
+  margin: 6px 0;
+}
+
+.receipt-preview .rs-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+.receipt-preview .rs-row > span:last-child {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.receipt-preview .rs-total {
+  font-weight: 700;
+  padding-top: 4px;
+  border-top: 1px solid #333;
+  margin-top: 4px;
+}
+
+.receipt-preview .rs-item { margin-bottom: 4px; }
+.receipt-preview .rs-item__name { font-weight: 600; }
+.receipt-preview .rs-item__line {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+.receipt-preview .rs-item__disc {
+  text-align: right;
+  font-size: 11px;
+  color: #b91c1c;
+}

@@ -1,0 +1,23 @@
+/**
+ * css/dark.css — Override manual mode gelap via class di <html>.
+ * Preferensi sistem sudah ditangani di base.css.
+ */
+
+html.theme-dark {
+  --color-bg: #0f172a;
+  --color-surface: #1e293b;
+  --color-surface-2: #334155;
+  --color-border: #334155;
+  --color-text: #f1f5f9;
+  --color-text-muted: #94a3b8;
+  --color-primary: #3b82f6;
+  --color-primary-hover: #60a5fa;
+  --color-primary-soft: #172554;
+  --color-success-soft: #052e16;
+  --color-warning-soft: #451a03;
+  --color-danger-soft: #450a0a;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, .4);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, .5);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, .6);
+  color-scheme: dark;
+}

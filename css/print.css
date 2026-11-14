@@ -1,0 +1,45 @@
+/**
+ * css/print.css — Aturan cetak via browser (fallback tanpa printer BLE).
+ */
+
+@media print {
+  @page {
+    size: 58mm auto;
+    margin: 0;
+  }
+
+  html, body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  body * { visibility: hidden; }
+
+  .receipt-preview,
+  .receipt-preview * {
+    visibility: visible;
+  }
+
+  .receipt-preview {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 58mm;
+    max-width: none;
+    border: none;
+    border-radius: 0;
+    padding: 2mm 2mm;
+    font-size: 10pt;
+    color: #000;
+  }
+
+  /* Sembunyikan navbar, bottom nav, tombol di mode cetak. */
+  .navbar, .bottom-nav, .modal__header, .modal__footer, .kasir-footer, .btn { display: none !important; }
+}
+
+/* 80mm */
+@media print and (min-width: 0) {
+  html[data-receipt-width="80"] .receipt-preview {
+    width: 80mm;
+  }
+}

@@ -1,0 +1,193 @@
+/**
+ * css/pages.css — Gaya tambahan halaman: produk, satuan, diskon,
+ * inventori, supplier, pembelian, riwayat, laporan, shift,
+ * barcode generator & print label.
+ */
+
+/* ============ FAB ============ */
+
+.fab {
+  position: fixed;
+  right: 16px;
+  bottom: calc(var(--bottom-nav-h) + var(--safe-bottom) + 16px);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: var(--color-primary-fg);
+  display: grid;
+  place-items: center;
+  box-shadow: var(--shadow-lg);
+  z-index: 25;
+}
+.fab:active { background: var(--color-primary-hover); }
+.fab .icon { width: 24px; height: 24px; }
+
+/* ============ List item ============ */
+
+.list-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+.list-item:active { background: var(--color-surface-2); }
+.list-item--disabled { opacity: .55; pointer-events: none; }
+.list-item__main { flex: 1; min-width: 0; }
+.list-item__title {
+  font-weight: 600;
+  font-size: var(--fs-md);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.list-item__meta {
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+.list-item__side { color: var(--color-text-muted); flex-shrink: 0; }
+
+/* ============ Detail row ============ */
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--color-border);
+  font-size: var(--fs-sm);
+}
+.detail-row:last-child { border-bottom: none; }
+.detail-row strong { font-variant-numeric: tabular-nums; }
+
+/* ============ Page tabs ============ */
+
+.page-tabs {
+  display: flex;
+  gap: 4px;
+  padding: 8px 12px;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.page-tabs::-webkit-scrollbar { display: none; }
+.page-tab {
+  min-height: 40px;
+  padding: 0 14px;
+  border-radius: var(--radius-full);
+  background: transparent;
+  color: var(--color-text-muted);
+  font-weight: 600;
+  font-size: var(--fs-sm);
+  white-space: nowrap;
+}
+.page-tab[aria-selected="true"] {
+  background: var(--color-primary);
+  color: var(--color-primary-fg);
+}
+
+/* ============ Picker list ============ */
+
+.picker-list {
+  max-height: 60vh;
+  overflow-y: auto;
+  margin-top: 8px;
+}
+
+/* ============ Form section ============ */
+
+.form-section {
+  padding: var(--sp-3) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+.form-section:last-child { border-bottom: none; }
+.form-section__title {
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  margin-bottom: var(--sp-2);
+}
+
+/* ============ Purchase item row ============ */
+
+.purchase-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+.purchase-item:last-child { border-bottom: none; }
+.purchase-item__name { font-weight: 600; }
+.purchase-item__meta { font-size: var(--fs-xs); color: var(--color-text-muted); }
+.purchase-item__remove {
+  align-self: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  background: var(--color-danger-soft);
+  color: var(--color-danger);
+  display: grid;
+  place-items: center;
+}
+.purchase-item__remove:active { opacity: .7; }
+
+/* ============ Barcode Generator ============ */
+
+/* Kotak preview barcode agar selalu punya tinggi yang cukup untuk scan */
+.barcode-preview {
+  width: 100%;
+  height: 60px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 0;
+}
+.barcode-preview svg { display: block; width: 100%; height: 100%; }
+
+/* ============ Barcode Label Print ============ */
+
+/* Label yang akan dicetak. Styling utama di-inject via JS inline,
+   tapi ini untuk fallback jika user langsung Ctrl+P tanpa lewat tombol. */
+.barcode-print-label {
+  background: #fff;
+  color: #000;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.barcode-print-label svg { display: block; width: 100%; height: 100%; }
+
+/* Area cetak — disembunyikan saat tidak dalam mode print.
+   Saat print, body * disembunyikan lalu area ini di-show. */
+#barcode-print-area { background: #fff; }
+
+/* ============ Print Mode (Ctrl+P fallback) ============ */
+
+@media print {
+  body * { visibility: hidden !important; }
+  #barcode-print-area,
+  #barcode-print-area * { visibility: visible !important; }
+  #barcode-print-area {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    background: #fff !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Override styling navbar/bottom-nav di print */
+  .navbar, .bottom-nav, .modal, .modal-backdrop, .fab, .toast-root { display: none !important; }
+}
