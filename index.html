@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="NagaPos - Aplikasi kasir offline-first." />
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="assets/logo/logo-mark.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="assets/logo/logo-mark.svg" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="NagaPos" />
+
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/kasir.css" />
+  <link rel="stylesheet" href="css/sales-order.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+  <link rel="stylesheet" href="css/receipt-preview.css" />
+  <link rel="stylesheet" href="css/dark.css" />
+  <link rel="stylesheet" href="css/print.css" media="print" />
+  <link rel="stylesheet" href="css/customer-display.css" />
+
+  <title>NagaPos</title>
+</head>
+<body>
+  <div id="app">
+    <div class="boot-screen" role="status" aria-live="polite">
+      <img src="assets/logo/logo-mark.svg" alt="" width="96" height="96" />
+      <h1>NagaPos</h1>
+      <p>Menyiapkan aplikasi…</p>
+    </div>
+  </div>
+  <div id="modal-root"></div>
+  <div id="toast-root"></div>
+  <div id="scanner-root"></div>
+  <noscript>
+    <p style="padding:16px;font-family:sans-serif">JavaScript dibutuhkan untuk menjalankan aplikasi ini.</p>
+  </noscript>
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>
