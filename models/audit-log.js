@@ -1,0 +1,113 @@
+/**
+ * src/models/audit-log.js
+ * Model & konstanta untuk audit log — termasuk aksi Batch/Expired.
+ */
+
+export const AUDIT_ACTIONS = Object.freeze({
+  SALE_CREATE: 'sale.create',
+  SALE_VOID: 'sale.void',
+  SALE_RETURN: 'sale.return',
+  DEBT_PAYMENT: 'debt.payment',
+  SHIFT_OPEN: 'shift.open',
+  SHIFT_CLOSE: 'shift.close',
+  STOCK_IN: 'stock.in',
+  STOCK_OUT: 'stock.out',
+  STOCK_ADJUST: 'stock.adjust',
+  PRODUCT_CREATE: 'product.create',
+  PRODUCT_UPDATE: 'product.update',
+  PRODUCT_DELETE: 'product.delete',
+  CUSTOMER_CREATE: 'customer.create',
+  CUSTOMER_DELETE: 'customer.delete',
+  SETTINGS_UPDATE: 'settings.update',
+  AUTH_LOGIN: 'auth.login',
+  AUTH_LOGIN_FAIL: 'auth.login_fail',
+  AUTH_LOGOUT: 'auth.logout',
+  SERIAL_ADD: 'serial.add',
+  SERIAL_SOLD: 'serial.sold',
+  SERIAL_RETURNED: 'serial.returned',
+  SERIAL_VOID: 'serial.void',
+  SERIAL_DAMAGED: 'serial.damaged',
+  SERIAL_DELETED: 'serial.deleted',
+  // ===== BARU: Batch / Expired =====
+  BATCH_CREATE: 'batch.create',
+  BATCH_ADJUST: 'batch.adjust',
+  BATCH_DAMAGED: 'batch.damaged',
+  BATCH_DELETED: 'batch.deleted',
+});
+
+export const ACTION_LABEL = Object.freeze({
+  'sale.create': 'Transaksi Baru',
+  'sale.void': 'Void Transaksi',
+  'sale.return': 'Retur Barang',
+  'debt.payment': 'Bayar Piutang',
+  'shift.open': 'Buka Shift',
+  'shift.close': 'Tutup Shift',
+  'stock.in': 'Stok Masuk',
+  'stock.out': 'Stok Keluar',
+  'stock.adjust': 'Opname Stok',
+  'product.create': 'Produk Baru',
+  'product.update': 'Ubah Produk',
+  'product.delete': 'Hapus Produk',
+  'customer.create': 'Pelanggan Baru',
+  'customer.delete': 'Hapus Pelanggan',
+  'settings.update': 'Ubah Pengaturan',
+  'auth.login': 'Login',
+  'auth.login_fail': 'Login Gagal',
+  'auth.logout': 'Logout',
+  'serial.add': 'Serial Baru',
+  'serial.sold': 'Serial Terjual',
+  'serial.returned': 'Serial Diretur',
+  'serial.void': 'Serial Void',
+  'serial.damaged': 'Serial Rusak',
+  'serial.deleted': 'Serial Dihapus',
+  'batch.create': 'Batch Baru',
+  'batch.adjust': 'Koreksi Batch',
+  'batch.damaged': 'Batch Rusak',
+  'batch.deleted': 'Batch Dihapus',
+});
+
+export const ACTION_COLOR = Object.freeze({
+  'sale.create': 'success',
+  'sale.void': 'danger',
+  'sale.return': 'warning',
+  'debt.payment': 'success',
+  'shift.open': 'info',
+  'shift.close': 'info',
+  'stock.in': 'success',
+  'stock.out': 'warning',
+  'stock.adjust': 'info',
+  'product.create': 'success',
+  'product.update': 'info',
+  'product.delete': 'danger',
+  'customer.create': 'success',
+  'customer.delete': 'danger',
+  'settings.update': 'info',
+  'auth.login': 'success',
+  'auth.login_fail': 'danger',
+  'auth.logout': 'info',
+  'serial.add': 'success',
+  'serial.sold': 'success',
+  'serial.returned': 'warning',
+  'serial.void': 'warning',
+  'serial.damaged': 'danger',
+  'serial.deleted': 'danger',
+  'batch.create': 'success',
+  'batch.adjust': 'info',
+  'batch.damaged': 'danger',
+  'batch.deleted': 'danger',
+});
+
+export const AUDIT_DEFAULTS = {
+  id: '',
+  at: 0,
+  action: '',
+  userId: '',
+  details: {},
+  createdAt: 0,
+  updatedAt: 0,
+  deleted: false,
+};
+
+export function createAuditLog(input = {}) {
+  return { ...AUDIT_DEFAULTS, ...input };
+}
